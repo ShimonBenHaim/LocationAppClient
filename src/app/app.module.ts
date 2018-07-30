@@ -29,7 +29,7 @@ import { ServiceWorkerModule } from "@angular/service-worker";
     EventCreateComponent,
     EventListComponent,
     LocationComponent,
-    ErrorComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
