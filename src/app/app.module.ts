@@ -39,7 +39,9 @@ import { ServiceWorkerModule } from "@angular/service-worker";
     BrowserAnimationsModule,
     HttpClientModule,
     AngularMaterialModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
+    ServiceWorkerModule.register("/ngsw-worker.js", {
+      enabled: environment.production
+    }),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyBx5rxWUm0yJQ_evuhlE36wVUOyVOFtkH0",
       libraries: ["places", "geometry"]
