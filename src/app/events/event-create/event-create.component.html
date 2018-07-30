@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <mat-card>
+    <form [formGroup]="form" (submit)="AddOrUpdate()">
+      <mat-form-field>
+        <input matInput type="text" name="title" class="form-control" minLength="3" placeholder="Event title" formControlName="title">
+        <mat-error *ngIf="title.invalid">Please enter a title</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput rows="6" name="description" class="form-control" minLength="3" placeholder="Event description" formControlName="description">
+                  </textarea>
+        <mat-error *ngIf="description.invalid">Please enter a description</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="accent" type="submit"> Event</button>
+    </form>
+  </mat-card>
+</body>
+
+</html>

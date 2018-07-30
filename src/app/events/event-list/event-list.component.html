@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <!-- Show all events on list -->
+  <mat-accordion multi="true" *ngIf="events.length > 0">
+    <mat-expansion-panel *ngFor="let event of events">
+      <mat-expansion-panel-header>
+        {{ event.title }}
+      </mat-expansion-panel-header>
+      <p>{{ event.description }}</p>
+      <mat-action-row *ngIf="userIsAuthenticated && userId === event.creator">
+        <button mat-button color="warn" (click)="onDelete(event.id)">DELETE</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <p class="info-text mat-body-1" *ngIf="events.length <= 0">No events added yet!</p>
+</body>
+
+</html>

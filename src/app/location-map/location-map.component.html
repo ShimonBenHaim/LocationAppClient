@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div class="">
+      <button mat-raised-button color="primary" (click)="getUserLocation()">Find Me</button>
+  </div>
+  <div class="moveToRight">
+    <div class="form-group">
+      <mat-slider class="example-margin" (input)="onInputChange($event)" [max]="10000" [min]="1" thumbLabel [displayWith]="formatLabel"
+        tickInterval="1000" value="2000">
+      </mat-slider>
+    </div>
+  </div>
+  <div class="moveToLeft">
+    <div class="form-group"><strong>Search here: </strong>
+      <input matInput placeholder="search for location" class="search" autocorrect="off" autocapitalize="off" spellcheck="off"
+        type="text" class="form-control" #search [formControl]="searchControl">
+    </div>
+  </div>
+  <!-- Single marker for my location -->
+  <agm-map [latitude]="location.lat" [longitude]="location.lng" [scrollwheel]="false" [zoom]="zoom" (mapClick)="mapClicked($event)">
+    <agm-marker #bluemarker [iconUrl]="'https://maps.google.com/mapfiles/ms/icons/blue.png'" [latitude]="location.lat" [longitude]="location.lng"
+      (markerClick)="openCreateEvent()">
+
+    </agm-marker>
+    <agm-circle [latitude]="location.lat" [longitude]="location.lng" [radius]="enteredRadius" [fillColor]="'red'" [circleDraggable]="false"
+      [editable]="false">
+    </agm-circle>
+    <!-- Markers for all events -->
+    <agm-marker *ngFor="let event of filteredEvents; let i = index" [latitude]="event.location.lat" [longitude]="event.location.lng">
+      <agm-info-window>
+        <strong>Title: </strong>
+        <strong>{{event.title}}</strong>
+        <br>
+        <strong>Description: </strong>
+        <br>
+        <textarea>{{event.description}}</textarea>
+        <br>
+        <button mat-stroked-button color="primary">Go to Event</button>
+        <!-- (click)="onGoToEvent(event)" -->
+        <br>
+        <br>
+        <button *ngIf="userIsAuthenticated  && userId === event.creator" mat-stroked-button color="warn" (click)="onDelete(event)">DELETE</button>
+        <button *ngIf="userIsAuthenticated  && userId === event.creator" mat-stroked-button color="primary" (click)="onUpdate(event.id)">UPDATE</button>
+
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+</body>
+
+</html>

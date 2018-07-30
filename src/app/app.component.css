@@ -1,0 +1,11 @@
+main {
+  width: 80%;
+  margin: 1rem auto;
+}
+
+.backGroudClass {
+  background-image: url("https://img00.deviantart.net/c789/i/2011/253/a/3/nyc_map_twitter_background_by_viclou-d49fr2k.jpg");
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
